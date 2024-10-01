@@ -1,7 +1,7 @@
 {
     "name": "Next.js Development",
     "dockerFile": "Dockerfile.dev",
-    "forwardPorts": [3000],
+    "forwardPorts": [4000],
     "remoteUser": "node",
     "mounts": [
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"

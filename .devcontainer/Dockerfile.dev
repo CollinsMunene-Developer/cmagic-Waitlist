@@ -15,4 +15,6 @@ RUN apt-get update && apt-get install -y \
 
 # Set the working directory in the container
 WORKDIR /app
+#expose the ports
+EXPOSE 4000
 
