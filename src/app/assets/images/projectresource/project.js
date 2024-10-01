@@ -1,0 +1,1 @@
+export {default as project1} from "./Project-resource-p-500.png";

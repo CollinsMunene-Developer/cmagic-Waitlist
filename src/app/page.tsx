@@ -1,11 +1,22 @@
+"use client"
+import {frame1} from "../../src/app/assets/images/frames/frames"
 import Image from "next/image";
-import styles from "./page.module.css";
+import {background1} from "./assets/images/Background/background"
 
 export default function Home() {
   return (
-    <h1>collins is great </h1>
-    <p>collins is tring to develop in devcontainers</p>
-    
+    <div className="">
+         <h1>collins is great </h1>
+         <Image src={frame1} alt="" />
+         <Image src={background1} alt="" />
+         <h1>collins is great </h1>
+         <p>collins is tring to develop in devcontainers</p>
+         <h1>collins is great </h1>
+         <p>collins is tring to develop in devcontainers</p>
+         <h1>collins is great </h1>
+         <p>collins is tring to develop in devcontainers</p>
+
+</div>
 
   );
 }
