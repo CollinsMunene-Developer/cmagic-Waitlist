@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { contentlogo, azure, amazonicon } from "./assets/icons/moreicons/moreicons";
 import {playbutton} from "./assets/icons/icons"
+import "./css/cloudmagic.webflow.css"
+import "./css/normalize.css"
+import "./css/webflow.css"
+
+
 
 export default function Home() {
   const router = useRouter();
@@ -15,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <div className="cmagic_homepage">
+    <div className="body">
       <nav className="nav">
         <Link href="/" className="brand-nav w-inline-block">
           <Image
@@ -23,7 +28,7 @@ export default function Home() {
             alt=""
             className="brand-image"
             width={665}
-            height={100}
+            height={50}
           />
         </Link>
       </nav>
@@ -47,7 +52,8 @@ export default function Home() {
             </div>
             <div className="hero-button-wrapper">
               <Link href="/join-waitlist" className="button w-button">
-                Join Waitlist
+              Join Waitlist
+
               </Link>
             </div>
           </div>
@@ -57,7 +63,7 @@ export default function Home() {
         <div className="bg-wrapper"></div>
         <div className="container auto">
           <div className="video-wrapper">
-            <a href="#" className="w-inline-block w-lightbox">
+            <a href="#" className="w-inline-block w-lightbox" >
               <Image
                 src={playbutton}
                 alt=""
@@ -111,7 +117,7 @@ export default function Home() {
                 alt=""
                 className="footer-image"
                 width={665}
-                height={100}
+                height={50}
               />
               <p className="body-paragraph-2 normal white">
                 We&apos;re testing Cloudmagic, a service that helps you deploy
