@@ -297,7 +297,7 @@
    *    (similar to normalize.css >=4.0.0)
    */
   input[type='search'] {
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     /* 1 */
   }
   /**
