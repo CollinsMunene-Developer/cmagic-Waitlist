@@ -28,7 +28,7 @@ export default function Home() {
             alt=""
             className="brand-image"
             width={665}
-            height={50}
+            height={30}
           />
         </Link>
       </nav>
@@ -117,7 +117,7 @@ export default function Home() {
                 alt=""
                 className="footer-image"
                 width={665}
-                height={50}
+                height={30}
               />
               <p className="body-paragraph-2 normal white">
                 We&apos;re testing Cloudmagic, a service that helps you deploy

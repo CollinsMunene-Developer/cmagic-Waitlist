@@ -75,7 +75,7 @@ const FormPage = () => {
             src={contentlogo}
             alt=""
             width={200}
-            height={50}
+            height={30}
             className="brand-image"
           />
         </Link>
