@@ -1763,7 +1763,6 @@
   }
   .w-tab-pane {
     position: relative;
-    display: none;
   }
   .w--tab-active {
     display: block;

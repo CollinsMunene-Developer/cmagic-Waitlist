@@ -14,7 +14,7 @@ import { background7 } from "../assets/images/Background/background";
 import { mailimg } from "../assets/icons/icons";
 import "../css/cloudmagic.webflow.css";
 import "../css/normalize.css";
-// import "../css/webflow.css";
+import "../css/webflow.css";
 
 const FormPage = () => {
   const router = useRouter();
@@ -31,9 +31,33 @@ const FormPage = () => {
     usage: "",
   });
 
-  useEffect(() => {
-    // Initialize custom dropdowns and other client-side scripts here
-  }, []);
+  // useEffect(() => {
+  //   // Initialize custom dropdowns and other client-side scripts here
+  //   // This code will run only once when the component mounts
+  //   // You can use this to initialize any client-side scripts
+  //   // For example, initializing custom dropdowns
+  //   const dropdowns = document.querySelectorAll(".fs-select_list-1");
+
+  // }, []);
+
+  const validateForm = () => {
+    //validate the email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    //validate the company size
+    if (
+      !["0 -50", "50 - 100", "100 - 200", "200 -500", "500 +"].includes(
+        formData.companySize
+      )
+    ) {
+      alert("Please select a valid company size.");
+      return false;
+    }
+    return true;
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -47,26 +71,30 @@ const FormPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Implement form submission logic here
-    console.log(formData);
-    // You might want to send this data to an API endpoint
-    // If all fields are filled, submit the form
-    if (Object.values(formData).every((field) => field !== "")) {
+
+    // Check if all fields are filled
+    if (Object.values(formData).every((field) => field !== "") && validateForm()) {
       try {
-        //implementing api call to handle registration
-        await fetch(
+        const response = await fetch(
           "https://dev-cm-waitlist-api.kindwave-7b744f2c.northeurope.azurecontainerapps.io/api/Waitlist",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              //for using api-keys
               "x-api-key": "0e6e466522ec4540b13df26a762d71d3",
             },
             body: JSON.stringify(formData),
           }
         );
-        // Redirect to a success page
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Form submitted successfully:", result);
+
+        // Redirect to success page
         router.push("/success");
       } catch (error) {
         console.error("Error submitting form:", error);
@@ -74,11 +102,8 @@ const FormPage = () => {
           "An error occurred while submitting the form. Please try again later."
         );
       }
-      console.log("Form submitted:", formData);
     } else {
-      alert(
-        "You cannot join the waitlist until you have completed the form. Please ensure that you have completed all fields."
-      );
+      alert("Please complete all fields before submitting the form.");
     }
   };
 
@@ -386,7 +411,7 @@ const FormPage = () => {
               </div>
               <div className="tabs-content w-tab-content">
                 {currentTab === "Tab 1" && (
-                  <div className="tab-pane-tab-1 w-tab-pane w--tab-active">
+                  <div className=" w--tab-active">
                     <div className="tab-content-wrapper">
                       <div className="form-container">
                         <div className="form-header-wrapper">
@@ -438,6 +463,8 @@ const FormPage = () => {
                               required
                             />
                           </div>
+                          //provide error for providing wrong email format
+                          
                         </div>
                         <a onClick={nextTab} className="tab-next w-button">
                           Next
@@ -491,7 +518,7 @@ const FormPage = () => {
                               value={formData.country}
                               onChange={handleInputChange}
                               required
-                              className="fs-select_list-1"
+                              className="z"
                             >
                               <option value="">Select Country</option>
                               {countries.map((country, index) => (
@@ -511,7 +538,7 @@ const FormPage = () => {
                               value={formData.companySize}
                               onChange={handleInputChange}
                               required
-                              className="field-label w-select"
+                              className="company-size"
                             >
                               <option value="">Select company size...</option>
                               <option value="0 -50">0 -50</option>
