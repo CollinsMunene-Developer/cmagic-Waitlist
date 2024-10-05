@@ -8,14 +8,14 @@ import { contentlogo } from "../assets/icons/moreicons/moreicons";
 
 const PrivacyPolicyPage = () => {
   return (
-    <div>
+    <div className="body">
       <nav className="nav">
-        <Link href="/" className="brand-nav w-inline-block">
+        <Link href="/" className="brand-nav ">
           <Image
             src={contentlogo}
             alt=""
             width={665}
-            height={50}
+            height={40}
             className="brand-image"
           />
         </Link>
@@ -203,7 +203,7 @@ const PrivacyPolicyPage = () => {
             cutting-edge container infrastructure for your Microservices – in
             minutes. Sign up for early access.
           </p>
-          <Link href="/join-waitlist" className="tab-next cta w-button">
+          <Link href="/join-waitlist" className="tab-next cta">
             Join Waitlist
           </Link>
         </div>
@@ -217,7 +217,7 @@ const PrivacyPolicyPage = () => {
                 src={contentlogo}
                 alt=""
                 width={665}
-                height={50}
+                height={40}
                 className="footer-image"
               />
               <p className="body-paragraph-2 normal white">

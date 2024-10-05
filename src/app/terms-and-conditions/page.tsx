@@ -195,7 +195,7 @@ const TermsAndConditionsPage = () => {
             cutting-edge container infrastructure for your Microservices – in
             minutes. Sign up for early access.
           </p>
-          <Link href="join-waitlist" className="tab-next cta w-button">
+          <Link href="join-waitlist" className="tab-next cta ">
             Join Waitlist
           </Link>
         </div>

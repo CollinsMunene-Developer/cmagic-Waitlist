@@ -322,7 +322,7 @@ const FormPage = () => {
             src={contentlogo}
             alt=""
             width={200}
-            height={30}
+            height={40}
             className="brand-image"
             loading="lazy"
             sizes="(max-width: 479px) 42vw, (max-width: 991px) 16vw, 10vw"
@@ -332,11 +332,11 @@ const FormPage = () => {
       <div className="tab-form-wrapper">
         <div className="form-block w-form">
           <form onSubmit={handleSubmit} className="form">
-            <div className="tabs w-tabs">
-              <div className="tabs-menu w-tab-menu">
+            <div className="tabs ">
+              <div className="tabs-menu">
                 <a
                   onClick={() => setCurrentTab("Tab 1")}
-                  className={`tab-form w-inline-block w-tab-link ${
+                  className={`tab-form ${
                     currentTab === "Tab 1" ? "w--current" : ""
                   }`}
                 >
@@ -345,8 +345,8 @@ const FormPage = () => {
                       <Image
                         src={featuredicon3}
                         alt=""
-                        width={24}
-                        height={24}
+                        width={48}
+                        height={48}
                         className="tab-image"
                       />
                       <div className="progress-line hide"></div>
@@ -361,7 +361,7 @@ const FormPage = () => {
                 </a>
                 <a
                   onClick={() => setCurrentTab("Tab 2")}
-                  className={`tab-form w-inline-block w-tab-link ${
+                  className={`tab-form ${
                     currentTab === "Tab 2" ? "w--current" : ""
                   }`}
                 >
@@ -370,8 +370,8 @@ const FormPage = () => {
                       <Image
                         src={featuredicon2}
                         alt=""
-                        width={24}
-                        height={24}
+                        width={48}
+                        height={48}
                         className="tab-image"
                       />
                       <div className="progress-line hide"></div>
@@ -386,7 +386,7 @@ const FormPage = () => {
                 </a>
                 <a
                   onClick={() => setCurrentTab("Tab 3")}
-                  className={`tab-form w-inline-block w-tab-link ${
+                  className={`tab-form ${
                     currentTab === "Tab 3" ? "w--current" : ""
                   }`}
                 >
@@ -395,8 +395,8 @@ const FormPage = () => {
                       <Image
                         src={featuredicon1}
                         alt=""
-                        width={24}
-                        height={24}
+                        width={48}
+                        height={48}
                         className="tab-image"
                       />
                     </div>
@@ -411,7 +411,7 @@ const FormPage = () => {
               </div>
               <div className="tabs-content w-tab-content">
                 {currentTab === "Tab 1" && (
-                  <div className=" w--tab-active">
+                  <div className=" tab-pane-tab-1 w-tab-pane w--tab-active">
                     <div className="tab-content-wrapper">
                       <div className="form-container">
                         <div className="form-header-wrapper">
@@ -426,7 +426,7 @@ const FormPage = () => {
                           <div className="field-text">First name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label w-input"
+                              className="field-label"
                               name="firstName"
                               placeholder="Enter your first name"
                               type="text"
@@ -440,7 +440,7 @@ const FormPage = () => {
                           <div className="field-text">Last Name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label w-input"
+                              className="field-label"
                               name="lastName"
                               placeholder="Enter your last name"
                               type="text"
@@ -454,7 +454,7 @@ const FormPage = () => {
                           <div className="field-text">Email</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label w-input"
+                              className="field-label"
                               name="email"
                               placeholder="Enter your email"
                               type="email"
@@ -463,10 +463,9 @@ const FormPage = () => {
                               required
                             />
                           </div>
-                          //provide error for providing wrong email format
                           
                         </div>
-                        <a onClick={nextTab} className="tab-next w-button">
+                        <a onClick={nextTab} className="tab-next">
                           Next
                         </a>
                       </div>
@@ -499,7 +498,7 @@ const FormPage = () => {
                           <div className="field-text">Company Name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label w-input"
+                              className="field-label"
                               name="companyName"
                               placeholder="Enter your company name"
                               type="text"
@@ -511,14 +510,15 @@ const FormPage = () => {
                         </div>
                         <div className="form-fields">
                           <div className="field-text">Country</div>
-                          <div className="ff-wrapper field">
+                          <div className="ff-wrapper">
+                            <nav className="w-Select">
                             <select
                               id="Select-Country"
                               name="country"
                               value={formData.country}
                               onChange={handleInputChange}
                               required
-                              className="z"
+                              className="select-field"
                             >
                               <option value="">Select Country</option>
                               {countries.map((country, index) => (
@@ -527,11 +527,13 @@ const FormPage = () => {
                                 </option>
                               ))}
                             </select>
+                            </nav>
                           </div>
                         </div>
                         <div className="form-fields">
                           <div className="field-text">Company size</div>
-                          <div className="ff-wrapper field">
+                          <div className="ff-wrapper">
+                            <nav className="field-label">
                             <select
                               id="Company-size-2"
                               name="companySize"
@@ -547,16 +549,17 @@ const FormPage = () => {
                               <option value="200 -500">200 -500</option>
                               <option value="500 +">500 +</option>
                             </select>
+                            </nav>
                           </div>
                         </div>
                         <div className="button-wrap">
                           <a
                             onClick={previousTab}
-                            className="tab-previous w-button"
+                            className="tab-previous"
                           >
                             Back
                           </a>
-                          <a onClick={nextTab} className="tab-next w-button">
+                          <a onClick={nextTab} className="tab-next">
                             Next
                           </a>
                         </div>
@@ -581,21 +584,21 @@ const FormPage = () => {
                         <div className="form-header-wrapper">
                           <div className="form-header">
                             <h2 className="heading-2">Role & Usage</h2>
-                            <p className="body-paragraph medium grey">
+                            <p className="body-paragraph ">
                               Please provide your role and usage details.
                             </p>
                           </div>
                         </div>
                         <div className="form-fields">
                           <div className="field-text">Role</div>
-                          <div className="ff-wrapper field">
+                          <div className="ff-wrapper">
                             <select
                               id="Role-2"
                               name="role"
                               value={formData.role}
                               onChange={handleInputChange}
                               required
-                              className="field-label w-select"
+                              className="field-label"
                             >
                               <option value="">Select your role</option>
                               <option value="Cloud Architect">
@@ -617,14 +620,15 @@ const FormPage = () => {
                         </div>
                         <div className="form-fields">
                           <div className="field-text">Usage</div>
-                          <div className="ff-wrapper field">
+                          <div className="ff-wrapper">
+                            <nav className="field-label">
                             <select
                               id="Usage-2"
                               name="usage"
                               value={formData.usage}
                               onChange={handleInputChange}
                               required
-                              className="field-label w-select"
+                              className="field-label "
                             >
                               <option value="">
                                 How do you plan to use Cloudmagic?
@@ -633,18 +637,19 @@ const FormPage = () => {
                               <option value="Personal">Personal</option>
                               <option value="Both">Both</option>
                             </select>
+                            </nav>
                           </div>
                         </div>
                         <div className="button-wrap">
                           <a
                             onClick={previousTab}
-                            className="tab-previous w-button"
+                            className="tab-previous"
                           >
                             Back
                           </a>
                           <button
                             type="submit"
-                            className="submit-button w-button"
+                            className="submit-button"
                           >
                             Join waitlist!
                           </button>
@@ -671,7 +676,7 @@ const FormPage = () => {
         <div className="cc-right">© 2024 Shipht, Inc</div>
         <Link
           href="mailto:help@cloudmagic.dev"
-          className="link-block w-inline-block"
+          className="link-block "
         >
           <Image
             src={mailimg}

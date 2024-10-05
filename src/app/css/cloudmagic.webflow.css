@@ -150,6 +150,9 @@ h2 {
   margin-top: 1em;
   
 }
+.hero-button-wrapper .button{
+  color: #fff;
+}
 
 .bottom {
   background-color: #161b2600;
@@ -282,7 +285,7 @@ h2 {
 }
 
 .button-small.white {
-  color: #012635;
+  color: #fff;
   background-color: #fff;
   border-color: #fff;
 }
@@ -497,7 +500,7 @@ h2 {
   padding-left: 1em;
   padding-right: 1em;
   font-size: 1em;
-  display: inline-flex;
+  width: 100%;
 }
 
 .field-label::placeholder {

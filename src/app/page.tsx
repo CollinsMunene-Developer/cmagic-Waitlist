@@ -28,7 +28,7 @@ export default function Home() {
             alt=""
             className="brand-image"
             width={665}
-            height={30}
+            height={40}
           />
         </Link>
       </nav>
@@ -51,10 +51,10 @@ export default function Home() {
               </p>
             </div>
             <div className="hero-button-wrapper">
-              <Link href="/join-waitlist" className="button w-button">
+              <a className="button" onClick={handleJoinWaitlist} >
               Join Waitlist
 
-              </Link>
+            </a>
             </div>
           </div>
         </div>
@@ -68,8 +68,8 @@ export default function Home() {
                 src={playbutton}
                 alt=""
                 className="play-image"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
               />
             </a>
           </div>
@@ -88,7 +88,7 @@ export default function Home() {
                   src={azure}
                   alt=""
                   className="client-image"
-                  width={200}
+                  width={80}
                   height={100}
                 />
               </div>
@@ -100,7 +100,7 @@ export default function Home() {
                   src={amazonicon}
                   alt=""
                   className="client-image"
-                  width={200}
+                  width={80}
                   height={100}
                 />
               </div>
@@ -117,7 +117,7 @@ export default function Home() {
                 alt=""
                 className="footer-image"
                 width={665}
-                height={30}
+                height={40}
               />
               <p className="body-paragraph-2 normal white">
                 We&apos;re testing Cloudmagic, a service that helps you deploy
