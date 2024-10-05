@@ -500,7 +500,8 @@ h2 {
   padding-left: 1em;
   padding-right: 1em;
   font-size: 1em;
-  width: 100%;
+  display: inline-flex;
+  width: 100;
 }
 
 .field-label::placeholder {

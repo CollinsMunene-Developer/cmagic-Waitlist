@@ -1,22 +1,21 @@
-# Specify the base image
-FROM node:20.11  
-# Set the working directory in the container
+# Use the latest Node.js image
+FROM node:latest
+
+# Set the working directory
 WORKDIR /app
 
-# Install nodemon globally
-RUN npm install -g nodemon
+# Install dependencies
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-# Copy package.json and package-lock.json to leverage Docker cache
-COPY package*.json ./
-
-# Install project dependencies
-RUN npm install
-
-# Bundle app source inside Docker image
+# Copy the rest of the application code
 COPY . .
 
-# Your app binds to port 3000 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
-EXPOSE 3000
+# Build the Next.js application
+RUN npm run build
 
-# Define the command to run your app using CMD which defines your runtime
-CMD ["npm", "run", "dev"]
+# Expose the port the app runs on
+EXPOSE 4000
+
+# Start the application
+CMD ["npm", "start"]
