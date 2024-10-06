@@ -9,7 +9,7 @@ import "../css/webflow.css";
 
 const SuccessPage = () => {
   const goToCannywebsite = () => {
-    window.open("https://cloudmagic.canny.io/", "_blank");
+    window.open("https://cloudmagic.canny.io/cmag", "_blank");
   };
   return (
     <div className="body">
@@ -20,7 +20,7 @@ const SuccessPage = () => {
             alt=""
             className="brand-image"
             width={665}
-            height={40}
+            height={30}
             sizes="(max-width: 479px) 42vw, (max-width: 991px) 16vw, 10vw"
           />
         </Link>
@@ -56,7 +56,7 @@ const SuccessPage = () => {
               src={groupimg}
               alt=""
               className="user-image"
-              width={80.08}
+              width={80}
               height={80}
             />
             <div className="user-details">

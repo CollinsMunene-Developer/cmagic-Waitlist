@@ -1,4 +1,4 @@
-name: Deploy Next.js to Azure Web App
+name:  Next.js
 
 on:
   push:

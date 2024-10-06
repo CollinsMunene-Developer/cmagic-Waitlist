@@ -234,7 +234,6 @@ const TermsAndConditionsPage = () => {
                     className="navigation-link w-inline-block"
                   >
                     <div>Privacy</div>
-                    <div className="footer-tag">New</div>
                   </Link>
                   <Link
                     href="cookie-policy.html"

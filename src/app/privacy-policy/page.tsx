@@ -241,7 +241,6 @@ const PrivacyPolicyPage = () => {
                     className="navigation-link w--current"
                   >
                     <div>Privacy</div>
-                    <div className="footer-tag">New</div>
                   </Link>
                   <Link href="/cookie-policy" className="navigation-link">
                     <div>Cookies</div>

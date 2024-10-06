@@ -13,10 +13,10 @@ import {
 import { background7 } from "../assets/images/Background/background";
 import { mailimg } from "../assets/icons/icons";
 import "../css/normalize.css";
-// import "../css/cloudmagic.webflow.css";
+import "../css/cloudmagic.webflow.css";
 import "../css/webflow.css";
 import axios from "axios";
-import { Check, ChevronDown } from "lucide-react";
+import { Check } from "lucide-react";
 
 const FormPage = () => {
   const router = useRouter();
@@ -62,8 +62,11 @@ const FormPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-    if (Object.values(formData).every((field) => field !== "") && validateForm()) {
+
+    if (
+      Object.values(formData).every((field) => field !== "") &&
+      validateForm()
+    ) {
       try {
         const response = await axios.post(
           "https://dev-cm-waitlist-api.kindwave-7b744f2c.northeurope.azurecontainerapps.io/api/Waitlist",
@@ -75,23 +78,24 @@ const FormPage = () => {
             },
           }
         );
-  
+
         // Check for success status (200 or 201)
         if (response.status !== 200 && response.status !== 201) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-  
+
         console.log("Form submitted successfully:", response.data);
         router.push("/success");
       } catch (error) {
         console.error("Error submitting form:", error);
-        alert("An error occurred while submitting the form. Please try again later.");
+        alert(
+          "An error occurred while submitting the form. Please try again later."
+        );
       }
     } else {
       alert("Please complete all fields before submitting the form.");
     }
   };
-  
 
   const nextTab = () => {
     if (currentTab === "Tab 1") setCurrentTab("Tab 2");
@@ -103,68 +107,211 @@ const FormPage = () => {
     if (currentTab === "Tab 2") setCurrentTab("Tab 1");
   };
 
-  const countries = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina",
-    "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
-    "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
-    "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon",
-    "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
-    "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
-    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
-    "Eswatini (fmr. Swaziland)", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia",
-    "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
-    "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
-    "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
-    "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
-    "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
-    "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco",
-    "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru",
-    "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea",
-    "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay",
-    "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
-    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
-    "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
-    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea",
-    "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
-    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga",
-    "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
-    "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan",
-    "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
-  ];
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const handleCountryChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      country: e.target.value,
+    }));
 
-  const CustomCountryDropdown = ({ value, onChange }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleDropdown = () => setIsOpen(!isOpen);
-
-    const handleSelect = (country) => {
-      onChange(country);
-      setIsOpen(false);
-    };
-
-    return (
-      <div className="custom-dropdown">
-        <button onClick={toggleDropdown} className="dropdown-toggle">
-          {value || "Select Country"}
-          <ChevronDown className="dropdown-icon" />
-        </button>
-        {isOpen && (
-          <ul className="dropdown-menu">
-            {countries.map((country, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelect(country)}
-                className="dropdown-item"
-              >
-                <span>{country}</span>
-                {value === country && <Check className="check-icon" />}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
+    setSelectedCountry(e.target.value);
   };
+  const countries = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cabo Verde",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Central African Republic",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Comoros",
+    "Congo (Congo-Brazzaville)",
+    "Costa Rica",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czech Republic",
+    "Democratic Republic of the Congo",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Equatorial Guinea",
+    "Eritrea",
+    "Estonia",
+    "Eswatini (fmr. Swaziland)",
+    "Ethiopia",
+    "Fiji",
+    "Finland",
+    "France",
+    "Gabon",
+    "Gambia",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Grenada",
+    "Guatemala",
+    "Guinea",
+    "Guinea-Bissau",
+    "Guyana",
+    "Haiti",
+    "Honduras",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kiribati",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Lesotho",
+    "Liberia",
+    "Libya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Madagascar",
+    "Malawi",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Marshall Islands",
+    "Mauritania",
+    "Mauritius",
+    "Mexico",
+    "Micronesia",
+    "Moldova",
+    "Monaco",
+    "Mongolia",
+    "Montenegro",
+    "Morocco",
+    "Mozambique",
+    "Myanmar (formerly Burma)",
+    "Namibia",
+    "Nauru",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Nicaragua",
+    "Niger",
+    "Nigeria",
+    "North Korea",
+    "North Macedonia",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saint Kitts and Nevis",
+    "Saint Lucia",
+    "Saint Vincent and the Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome and Principe",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Solomon Islands",
+    "Somalia",
+    "South Africa",
+    "South Korea",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Taiwan",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Timor-Leste",
+    "Togo",
+    "Tonga",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Tuvalu",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States of America",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Vatican City",
+    "Venezuela",
+    "Vietnam",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe",
+  ];
 
   return (
     <div className="body">
@@ -188,7 +335,9 @@ const FormPage = () => {
               <div className="tabs-menu">
                 <a
                   onClick={() => setCurrentTab("Tab 1")}
-                  className={`tab-form ${currentTab === "Tab 1" ? "w--current" : ""}`}
+                  className={`tab-form ${
+                    currentTab === "Tab 1" ? "w--current" : ""
+                  }`}
                 >
                   <div className="tab-details">
                     <div className="tab-image-progress">
@@ -211,7 +360,9 @@ const FormPage = () => {
                 </a>
                 <a
                   onClick={() => setCurrentTab("Tab 2")}
-                  className={`tab-form ${currentTab === "Tab 2" ? "w--current" : ""}`}
+                  className={`tab-form ${
+                    currentTab === "Tab 2" ? "w--current" : ""
+                  }`}
                 >
                   <div className="tab-details">
                     <div className="tab-image-progress">
@@ -234,7 +385,9 @@ const FormPage = () => {
                 </a>
                 <a
                   onClick={() => setCurrentTab("Tab 3")}
-                  className={`tab-form ${currentTab === "Tab 3" ? "w--current" : ""}`}
+                  className={`tab-form ${
+                    currentTab === "Tab 3" ? "w--current" : ""
+                  }`}
                 >
                   <div className="tab-details">
                     <div className="tab-image-progress">
@@ -356,25 +509,47 @@ const FormPage = () => {
                         <div className="form-fields">
                           <div className="field-text">Country</div>
                           <div className="ff-wrapper">
-                            <CustomCountryDropdown
-                              value={formData.country}
-                              onChange={(country) =>
-                                setFormData((prev) => ({ ...prev, country }))
-                              }
-                            />
+                            <select
+                              name="Country"
+                              id="country"
+                              value={selectedCountry}
+                              onChange={handleCountryChange}
+                              className="field-label"
+                            >
+                              
+                              <option
+                                value=""
+                                disabled
+                                style={{ color: "#cecfd2" }}
+                                pl
+                              >
+                                Select  Country
+                              </option>
+                              {countries.map((country) => (
+                                <option key={country} value={country}>
+                                  {country}
+                                  {formData.country === country && (
+                                    <Check
+                                      className="check-icon"
+                                      size={16}
+                                      color="purple"
+                                    />
+                                  )}
+                                </option>
+                              ))}
+                            </select>
                           </div>
                         </div>
                         <div className="form-fields">
                           <div className="field-text">Company size</div>
                           <div className="ff-wrapper">
-                            <nav className="field-label">
                             <select
                               id="Company-size-2"
                               name="companySize"
                               value={formData.companySize}
                               onChange={handleInputChange}
                               required
-                              className="company-size"
+                              className="field-label"
                             >
                               <option value="">Select company size...</option>
                               <option value="0 -50">0 -50</option>
@@ -383,14 +558,10 @@ const FormPage = () => {
                               <option value="200 -500">200 -500</option>
                               <option value="500 +">500 +</option>
                             </select>
-                            </nav>
                           </div>
                         </div>
                         <div className="button-wrap">
-                          <a
-                            onClick={previousTab}
-                            className="tab-previous"
-                          >
+                          <a onClick={previousTab} className="tab-previous">
                             Back
                           </a>
                           <a onClick={nextTab} className="tab-next">
@@ -456,35 +627,29 @@ const FormPage = () => {
                           <div className="field-text">Usage</div>
                           <div className="ff-wrapper">
                             <nav className="field-label">
-                            <select
-                              id="Usage-2"
-                              name="usage"
-                              value={formData.usage}
-                              onChange={handleInputChange}
-                              required
-                              className="field-label "
-                            >
-                              <option value="">
-                                How do you plan to use Cloudmagic?
-                              </option>
-                              <option value="Work">Work</option>
-                              <option value="Personal">Personal</option>
-                              <option value="Both">Both</option>
-                            </select>
+                              <select
+                                id="Usage-2"
+                                name="usage"
+                                value={formData.usage}
+                                onChange={handleInputChange}
+                                required
+                                className="field-label "
+                              >
+                                <option value="">
+                                  How do you plan to use Cloudmagic?
+                                </option>
+                                <option value="Work">Work</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Both">Both</option>
+                              </select>
                             </nav>
                           </div>
                         </div>
                         <div className="button-wrap">
-                          <a
-                            onClick={previousTab}
-                            className="tab-previous"
-                          >
+                          <a onClick={previousTab} className="tab-previous">
                             Back
                           </a>
-                          <button
-                            type="submit"
-                            className="submit-button"
-                          >
+                          <button type="submit" className="submit-button">
                             Join waitlist!
                           </button>
                         </div>
@@ -508,19 +673,6 @@ const FormPage = () => {
       </div>
       <footer className="footer-form-page">
         <div className="cc-right">© 2024 Shipht, Inc</div>
-        <Link
-          href="mailto:help@cloudmagic.dev"
-          className="link-block "
-        >
-          <Image
-            src={mailimg}
-            alt=""
-            width={24}
-            height={24}
-            className="email"
-          />
-          <div>help@cloudmagic.dev</div>
-        </Link>
       </footer>
     </div>
   );

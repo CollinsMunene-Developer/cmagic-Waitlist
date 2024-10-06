@@ -135,7 +135,6 @@ const CookiePolicyPage = () => {
                     className="navigation-link w-inline-block"
                   >
                     <div>Privacy</div>
-                    <div className="footer-tag">New</div>
                   </Link>
                   <Link
                     href="/cookie-policy"

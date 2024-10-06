@@ -96,6 +96,10 @@ h2 {
   line-height: 1.4em;
 }
 
+.hero-p-wrapper .body-paragraph span {
+  color: #fff;
+}
+
 .body-paragraph {
   color: #cecfd2;
   margin-bottom: 0;
@@ -234,6 +238,7 @@ h2 {
   grid-column-gap: 11em;
   grid-row-gap: 11em;
   grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .client-image {
@@ -651,6 +656,12 @@ h2 {
   width: 25em;
   display: flex;
   position: relative;
+}
+
+.ff-wrapper .field-label option {
+  color: #cecfd2;
+  font-size: 1em;
+  background-color: #0c111d;
 }
 
 .ff-wrapper {

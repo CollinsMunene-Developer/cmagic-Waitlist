@@ -2,18 +2,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { contentlogo, azure, amazonicon } from "./assets/icons/moreicons/moreicons";
-import {playbutton} from "./assets/icons/icons"
-import "./css/cloudmagic.webflow.css"
-import "./css/normalize.css"
-import "./css/webflow.css"
-
-
+import {
+  contentlogo,
+  azure,
+  amazonicon,
+  googleimg,
+} from "./assets/icons/moreicons/moreicons";
+import { playbutton } from "./assets/icons/icons";
+import "./css/cloudmagic.webflow.css";
+import "./css/normalize.css";
+import "./css/webflow.css";
 
 export default function Home() {
   const router = useRouter();
-
-
 
   const handleJoinWaitlist = () => {
     router.push("/join-waitlist");
@@ -25,10 +26,10 @@ export default function Home() {
         <Link href="/" className="brand-nav w-inline-block">
           <Image
             src={contentlogo}
-            alt=""
+            alt="Content Logo"
             className="brand-image"
             width={665}
-            height={40}
+            height={30}
           />
         </Link>
       </nav>
@@ -43,18 +44,17 @@ export default function Home() {
             </h1>
             <div className="hero-p-wrapper">
               <p className="body-paragraph">
-                We&apos;re testing Cloudmagic, a service that helps you deploy
-                cutting-edge container infrastructure for your Microservices –
-                in minutes. <br />
+                We&apos;re testing CLOUDMAGIC, a service that lets you deploy{" "}
+                <em>autoscale container infrastructure</em> to your favorite
+                cloud – in minutes. <br />
                 <br />
-                Sign up for early access.
+                <span className="sign-up-text">Sign up for early access.</span>
               </p>
             </div>
             <div className="hero-button-wrapper">
-              <a className="button" onClick={handleJoinWaitlist} >
-              Join Waitlist
-
-            </a>
+              <a className="button" onClick={handleJoinWaitlist}>
+                Join Waitlist
+              </a>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Home() {
         <div className="bg-wrapper"></div>
         <div className="container auto">
           <div className="video-wrapper">
-            <a href="#" className="w-inline-block w-lightbox" >
+            <a href="#" className="w-inline-block w-lightbox">
               <Image
                 src={playbutton}
                 alt=""
@@ -78,7 +78,7 @@ export default function Home() {
       <div className="client">
         <div className="container">
           <div className="client-wrapper">
-            <div className="text-block">Deploy to your favorite cloud</div>
+            <div className="text-block">Planned support for</div>
             <div className="w-layout-grid client-image-grid">
               <div
                 id="w-node-_782e7c2e-0d6a-f1db-6204-e5cb059b2a64-94e90351"
@@ -86,7 +86,7 @@ export default function Home() {
               >
                 <Image
                   src={azure}
-                  alt=""
+                  alt="Azure Logo"
                   className="client-image"
                   width={80}
                   height={100}
@@ -98,7 +98,19 @@ export default function Home() {
               >
                 <Image
                   src={amazonicon}
-                  alt=""
+                  alt="Amazon Logo"
+                  className="client-image"
+                  width={80}
+                  height={100}
+                />
+              </div>
+              <div
+                id="w-node-_43a2f9a2-cbd3-1de7-dab9-493cade4a36c-94e90351"
+                className="image-wrap"
+              >
+                <Image
+                  src={googleimg}
+                  alt="Amazon Logo"
                   className="client-image"
                   width={80}
                   height={100}
@@ -114,15 +126,14 @@ export default function Home() {
             <div className="footer-logo-wrap">
               <Image
                 src={contentlogo}
-                alt=""
+                alt="Footer Logo"
                 className="footer-image"
                 width={665}
-                height={40}
+                height={30}
               />
               <p className="body-paragraph-2 normal white">
-                We&apos;re testing Cloudmagic, a service that helps you deploy
-                cutting-edge container infrastructure for your Microservices –
-                in minutes.{" "}
+                CLOUDMAGIC lets you deploy autoscale container infrastructure to
+                your favorite cloud – in minutes.
               </p>
             </div>
             <div className="footer-navigation">
@@ -140,7 +151,6 @@ export default function Home() {
                     className="navigation-link w-inline-block"
                   >
                     <div>Privacy</div>
-                    <div className="footer-tag">New</div>
                   </Link>
                   <Link
                     href="/cookie-policy"
@@ -150,38 +160,13 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="navigation-block">
-                <div className="text-block-2">Contact</div>
-                <div className="navigation">
-                  <a
-                    href="mailto:help@cloudmagic.dev"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>help@cloudmagic.dev</div>
-                  </a>
-                  <div className="navigation-link w-inline-block">
-                    <div>
-                      Nairobi, Kenya
-                      <br />
-                      Ikigai, Westlands
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div
                 id="w-node-_6133e129-69fc-2ce6-1b85-5cc610993ee1-10993ebe"
                 className="navigation-block center"
               >
                 <div className="text-block-2">Social Media</div>
                 <div className="navigation">
-                  <a
-                    href="https://www.linkedin.com/company/shipht/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>Linkedin</div>
-                  </a>
                   <a
                     href="https://x.com/shipht_it"
                     target="_blank"
