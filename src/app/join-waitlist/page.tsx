@@ -13,7 +13,7 @@ import {
 import { background7 } from "../assets/images/Background/background";
 import { mailimg } from "../assets/icons/icons";
 import "../css/normalize.css";
-import "../css/cloudmagic.webflow.css";
+// import "../css/cloudmagic.webflow.css";
 import "../css/webflow.css";
 import axios from "axios";
 import { Check, ChevronDown } from "lucide-react";
