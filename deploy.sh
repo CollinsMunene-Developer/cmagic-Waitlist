@@ -1,61 +1,51 @@
 #!/bin/bash
 
-# Load environment variables from .env file
-if [ ! -f .env ]; then
-  echo ".env file not found!"
-  exit 1
-fi
+# Exit immediately if a command exits with a non-zero status
+set -e
 
-# Export environment variables, ignoring lines that start with #
-export $(grep -v '^#' .env | xargs -d '\n')
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
 
-# Set variables
-APP_NAME="vettingapp"
-RESOURCE_GROUP="Devops"
-ENV_NAME="vettingapp-env"
-LOCATION="North Europe"  # Update with your desired Azure region
+# Function to display error messages
+error() {
+    echo "Error: $1" >&2
+    exit 1
+}
 
-# Convert .env file to --env-vars arguments
-ENV_VARS=$(grep -v '^#' .env | awk -F= '{print "--env-vars", $1"="$2}' | tr '\n' ' ')
+# Check if required tools are installed
+command_exists az || error "Azure CLI is not installed. Please install it first."
+command_exists docker || error "Docker is not installed. Please install it first."
 
-# Generate a valid secret name from REGISTRY_URL if it exists
-if [ -n "$REGISTRY_URL" ]; then
-  SAFE_REGISTRY_URL=$(echo $REGISTRY_URL | sed 's/[^-._a-zA-Z0-9]/-/g')
-  ENV_VARS="${ENV_VARS} --env-vars REGISTRY_URL=${SAFE_REGISTRY_URL}"
-fi
+# Check if logged in to Azure
+az account show >/dev/null 2>&1 || error "Not logged in to Azure. Please run 'az login' first."
 
-# Check if az CLI is installed
-if ! command -v az &> /dev/null; then
-  echo "az CLI could not be found. Please install it and authenticate."
-  exit 1
-fi
+# Configuration
+APP_NAME="cmagic-waitlist-app"
+RESOURCE_GROUP="DevOps"
+LOCATION="eastus"
 
-# Authenticate to Azure (optional, if not already authenticated)
-az login
+# Ensure the resource group exists
+echo "Ensuring resource group exists..."
+az group create --name "$RESOURCE_GROUP" --location "$LOCATION" || error "Failed to create resource group"
 
-# Create the managed environment if it does not exist
-az containerapp env up \
-  --name $ENV_NAME \
-  --resource-group $RESOURCE_GROUP \
-  --location $LOCATION
-
-# Deploy using az containerapp up
+# Build and deploy the application using az containerapp up
+echo "Building and deploying the application..."
 az containerapp up \
-  --name $APP_NAME \
-  --resource-group $RESOURCE_GROUP \
-  --environment $ENV_NAME \
-  --source . \
-  $ENV_VARS
+    --name "$APP_NAME" \
+    --resource-group "$RESOURCE_GROUP" \
+    --location "$LOCATION" \
+    --source . \
+    --ingress external \
+    --target-port 4000 \
+    --env-vars NODE_ENV=production || error "Failed to deploy the application"
 
-# Check for errors during deployment
-if [ $? -ne 0 ]; then
-  echo "Deployment failed."
-  exit 1
+# Get and display the app URL
+APP_URL=$(az containerapp show --name "$APP_NAME" --resource-group "$RESOURCE_GROUP" --query "properties.configuration.ingress.fqdn" -o tsv)
+if [ -n "$APP_URL" ]; then
+    echo "Deployment completed successfully!"
+    echo "Your app is now available at: https://$APP_URL"
+else
+    error "Failed to retrieve the app URL"
 fi
-
-echo "Deployment successful."
-
-# Fetch logs for the deployed container app
-az containerapp logs show \
-  --name $APP_NAME \
-  --resource-group $RESOURCE_GROUP

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,9 +12,11 @@ import {
 } from "../assets/icons/featuredicons/featuredicons";
 import { background7 } from "../assets/images/Background/background";
 import { mailimg } from "../assets/icons/icons";
-import "../css/cloudmagic.webflow.css";
 import "../css/normalize.css";
+import "../css/cloudmagic.webflow.css";
 import "../css/webflow.css";
+import axios from "axios";
+import { Check, ChevronDown } from "lucide-react";
 
 const FormPage = () => {
   const router = useRouter();
@@ -31,23 +33,12 @@ const FormPage = () => {
     usage: "",
   });
 
-  // useEffect(() => {
-  //   // Initialize custom dropdowns and other client-side scripts here
-  //   // This code will run only once when the component mounts
-  //   // You can use this to initialize any client-side scripts
-  //   // For example, initializing custom dropdowns
-  //   const dropdowns = document.querySelectorAll(".fs-select_list-1");
-
-  // }, []);
-
   const validateForm = () => {
-    //validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       alert("Please enter a valid email address.");
       return false;
     }
-    //validate the company size
     if (
       !["0 -50", "50 - 100", "100 - 200", "200 -500", "500 +"].includes(
         formData.companySize
@@ -71,41 +62,36 @@ const FormPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Check if all fields are filled
+  
     if (Object.values(formData).every((field) => field !== "") && validateForm()) {
       try {
-        const response = await fetch(
+        const response = await axios.post(
           "https://dev-cm-waitlist-api.kindwave-7b744f2c.northeurope.azurecontainerapps.io/api/Waitlist",
+          formData,
           {
-            method: "POST",
             headers: {
               "Content-Type": "application/json",
               "x-api-key": "0e6e466522ec4540b13df26a762d71d3",
             },
-            body: JSON.stringify(formData),
           }
         );
-
-        if (!response.ok) {
+  
+        // Check for success status (200 or 201)
+        if (response.status !== 200 && response.status !== 201) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        const result = await response.json();
-        console.log("Form submitted successfully:", result);
-
-        // Redirect to success page
+  
+        console.log("Form submitted successfully:", response.data);
         router.push("/success");
       } catch (error) {
         console.error("Error submitting form:", error);
-        alert(
-          "An error occurred while submitting the form. Please try again later."
-        );
+        alert("An error occurred while submitting the form. Please try again later.");
       }
     } else {
       alert("Please complete all fields before submitting the form.");
     }
   };
+  
 
   const nextTab = () => {
     if (currentTab === "Tab 1") setCurrentTab("Tab 2");
@@ -118,201 +104,67 @@ const FormPage = () => {
   };
 
   const countries = [
-    "Afghanistan",
-    "Albania",
-    "Algeria",
-    "Andorra",
-    "Angola",
-    "Antigua and Barbuda",
-    "Argentina",
-    "Armenia",
-    "Australia",
-    "Austria",
-    "Azerbaijan",
-    "Bahamas",
-    "Bahrain",
-    "Bangladesh",
-    "Barbados",
-    "Belarus",
-    "Belgium",
-    "Belize",
-    "Benin",
-    "Bhutan",
-    "Bolivia",
-    "Bosnia and Herzegovina",
-    "Botswana",
-    "Brazil",
-    "Brunei",
-    "Bulgaria",
-    "Burkina Faso",
-    "Burundi",
-    "Cabo Verde",
-    "Cambodia",
-    "Cameroon",
-    "Canada",
-    "Central African Republic",
-    "Chad",
-    "Chile",
-    "China",
-    "Colombia",
-    "Comoros",
-    "Congo (Congo-Brazzaville)",
-    "Costa Rica",
-    "Croatia",
-    "Cuba",
-    "Cyprus",
-    "Czech Republic",
-    "Democratic Republic of the Congo",
-    "Denmark",
-    "Djibouti",
-    "Dominica",
-    "Dominican Republic",
-    "Ecuador",
-    "Egypt",
-    "El Salvador",
-    "Equatorial Guinea",
-    "Eritrea",
-    "Estonia",
-    "Eswatini (fmr. Swaziland)",
-    "Ethiopia",
-    "Fiji",
-    "Finland",
-    "France",
-    "Gabon",
-    "Gambia",
-    "Georgia",
-    "Germany",
-    "Ghana",
-    "Greece",
-    "Grenada",
-    "Guatemala",
-    "Guinea",
-    "Guinea-Bissau",
-    "Guyana",
-    "Haiti",
-    "Honduras",
-    "Hungary",
-    "Iceland",
-    "India",
-    "Indonesia",
-    "Iran",
-    "Iraq",
-    "Ireland",
-    "Israel",
-    "Italy",
-    "Jamaica",
-    "Japan",
-    "Jordan",
-    "Kazakhstan",
-    "Kenya",
-    "Kiribati",
-    "Kuwait",
-    "Kyrgyzstan",
-    "Laos",
-    "Latvia",
-    "Lebanon",
-    "Lesotho",
-    "Liberia",
-    "Libya",
-    "Liechtenstein",
-    "Lithuania",
-    "Luxembourg",
-    "Madagascar",
-    "Malawi",
-    "Malaysia",
-    "Maldives",
-    "Mali",
-    "Malta",
-    "Marshall Islands",
-    "Mauritania",
-    "Mauritius",
-    "Mexico",
-    "Micronesia",
-    "Moldova",
-    "Monaco",
-    "Mongolia",
-    "Montenegro",
-    "Morocco",
-    "Mozambique",
-    "Myanmar (formerly Burma)",
-    "Namibia",
-    "Nauru",
-    "Nepal",
-    "Netherlands",
-    "New Zealand",
-    "Nicaragua",
-    "Niger",
-    "Nigeria",
-    "North Korea",
-    "North Macedonia",
-    "Norway",
-    "Oman",
-    "Pakistan",
-    "Palau",
-    "Panama",
-    "Papua New Guinea",
-    "Paraguay",
-    "Peru",
-    "Philippines",
-    "Poland",
-    "Portugal",
-    "Qatar",
-    "Romania",
-    "Russia",
-    "Rwanda",
-    "Saint Kitts and Nevis",
-    "Saint Lucia",
-    "Saint Vincent and the Grenadines",
-    "Samoa",
-    "San Marino",
-    "Sao Tome and Principe",
-    "Saudi Arabia",
-    "Senegal",
-    "Serbia",
-    "Seychelles",
-    "Sierra Leone",
-    "Singapore",
-    "Slovakia",
-    "Slovenia",
-    "Solomon Islands",
-    "Somalia",
-    "South Africa",
-    "South Korea",
-    "South Sudan",
-    "Spain",
-    "Sri Lanka",
-    "Sudan",
-    "Suriname",
-    "Sweden",
-    "Switzerland",
-    "Syria",
-    "Taiwan",
-    "Tajikistan",
-    "Tanzania",
-    "Thailand",
-    "Timor-Leste",
-    "Togo",
-    "Tonga",
-    "Trinidad and Tobago",
-    "Tunisia",
-    "Turkey",
-    "Turkmenistan",
-    "Tuvalu",
-    "Uganda",
-    "Ukraine",
-    "United Arab Emirates",
-    "United Kingdom",
-    "United States of America",
-    "Uruguay",
-    "Uzbekistan",
-    "Vanuatu",
-    "Vatican City",
-    "Venezuela",
-    "Vietnam",
-    "Yemen",
-    "Zambia",
-    "Zimbabwe",
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina",
+    "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
+    "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
+    "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon",
+    "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
+    "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
+    "Eswatini (fmr. Swaziland)", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia",
+    "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
+    "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
+    "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
+    "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
+    "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
+    "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco",
+    "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru",
+    "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea",
+    "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay",
+    "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
+    "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea",
+    "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga",
+    "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
+    "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan",
+    "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
   ];
+
+  const CustomCountryDropdown = ({ value, onChange }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleDropdown = () => setIsOpen(!isOpen);
+
+    const handleSelect = (country) => {
+      onChange(country);
+      setIsOpen(false);
+    };
+
+    return (
+      <div className="custom-dropdown">
+        <button onClick={toggleDropdown} className="dropdown-toggle">
+          {value || "Select Country"}
+          <ChevronDown className="dropdown-icon" />
+        </button>
+        {isOpen && (
+          <ul className="dropdown-menu">
+            {countries.map((country, index) => (
+              <li
+                key={index}
+                onClick={() => handleSelect(country)}
+                className="dropdown-item"
+              >
+                <span>{country}</span>
+                {value === country && <Check className="check-icon" />}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="body">
@@ -332,13 +184,11 @@ const FormPage = () => {
       <div className="tab-form-wrapper">
         <div className="form-block w-form">
           <form onSubmit={handleSubmit} className="form">
-            <div className="tabs ">
+            <div className="tabs">
               <div className="tabs-menu">
                 <a
                   onClick={() => setCurrentTab("Tab 1")}
-                  className={`tab-form ${
-                    currentTab === "Tab 1" ? "w--current" : ""
-                  }`}
+                  className={`tab-form ${currentTab === "Tab 1" ? "w--current" : ""}`}
                 >
                   <div className="tab-details">
                     <div className="tab-image-progress">
@@ -361,9 +211,7 @@ const FormPage = () => {
                 </a>
                 <a
                   onClick={() => setCurrentTab("Tab 2")}
-                  className={`tab-form ${
-                    currentTab === "Tab 2" ? "w--current" : ""
-                  }`}
+                  className={`tab-form ${currentTab === "Tab 2" ? "w--current" : ""}`}
                 >
                   <div className="tab-details">
                     <div className="tab-image-progress">
@@ -386,9 +234,7 @@ const FormPage = () => {
                 </a>
                 <a
                   onClick={() => setCurrentTab("Tab 3")}
-                  className={`tab-form ${
-                    currentTab === "Tab 3" ? "w--current" : ""
-                  }`}
+                  className={`tab-form ${currentTab === "Tab 3" ? "w--current" : ""}`}
                 >
                   <div className="tab-details">
                     <div className="tab-image-progress">
@@ -411,7 +257,7 @@ const FormPage = () => {
               </div>
               <div className="tabs-content w-tab-content">
                 {currentTab === "Tab 1" && (
-                  <div className=" tab-pane-tab-1 w-tab-pane w--tab-active">
+                  <div className="tab-pane-tab-1 w-tab-pane w--tab-active">
                     <div className="tab-content-wrapper">
                       <div className="form-container">
                         <div className="form-header-wrapper">
@@ -463,7 +309,6 @@ const FormPage = () => {
                               required
                             />
                           </div>
-                          
                         </div>
                         <a onClick={nextTab} className="tab-next">
                           Next
@@ -483,7 +328,7 @@ const FormPage = () => {
                 )}
 
                 {currentTab === "Tab 2" && (
-                  <div className=" w-tab-pane">
+                  <div className="w-tab-pane">
                     <div className="tab-content-wrapper">
                       <div className="form-container">
                         <div className="form-header-wrapper">
@@ -511,23 +356,12 @@ const FormPage = () => {
                         <div className="form-fields">
                           <div className="field-text">Country</div>
                           <div className="ff-wrapper">
-                            <nav className="w-Select">
-                            <select
-                              id="Select-Country"
-                              name="country"
+                            <CustomCountryDropdown
                               value={formData.country}
-                              onChange={handleInputChange}
-                              required
-                              className="select-field"
-                            >
-                              <option value="">Select Country</option>
-                              {countries.map((country, index) => (
-                                <option key={index} value={country}>
-                                  {country}
-                                </option>
-                              ))}
-                            </select>
-                            </nav>
+                              onChange={(country) =>
+                                setFormData((prev) => ({ ...prev, country }))
+                              }
+                            />
                           </div>
                         </div>
                         <div className="form-fields">
