@@ -21,6 +21,8 @@ import { Check } from "lucide-react";
 const FormPage = () => {
   const router = useRouter();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [currentTab, setCurrentTab] = useState("Tab 1");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -62,6 +64,7 @@ const FormPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     if (
       Object.values(formData).every((field) => field !== "") &&
@@ -92,9 +95,14 @@ const FormPage = () => {
           "An error occurred while submitting the form. Please try again later."
         );
       }
+      finally {
+        setIsSubmitting(false);
+      }
+      
     } else {
       alert("Please complete all fields before submitting the form.");
     }
+
   };
 
   const nextTab = () => {
@@ -108,7 +116,7 @@ const FormPage = () => {
   };
 
   const [selectedCountry, setSelectedCountry] = useState("");
-  const handleCountryChange = (e) => {
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData((prevState) => ({
       ...prevState,
       country: e.target.value,
@@ -330,7 +338,7 @@ const FormPage = () => {
       </div>
       <div className="tab-form-wrapper">
         <div className="form-block w-form">
-          <form onSubmit={handleSubmit} className="form">
+          <form onSubmit={handleSubmit} className="form" >
             <div className="tabs">
               <div className="tabs-menu">
                 <a
@@ -515,24 +523,21 @@ const FormPage = () => {
                               value={selectedCountry}
                               onChange={handleCountryChange}
                               className="field-label"
+                              required
                             >
-                              
                               <option
                                 value=""
                                 disabled
-                                style={{ color: "#cecfd2" }}
-                                pl
+                                className="field-label"
+                              
                               >
-                                Select  Country
+                                Select Country
                               </option>
                               {countries.map((country) => (
                                 <option key={country} value={country}>
                                   {country}
                                   {formData.country === country && (
                                     <Check
-                                      className="check-icon"
-                                      size={16}
-                                      color="purple"
                                     />
                                   )}
                                 </option>
@@ -649,9 +654,14 @@ const FormPage = () => {
                           <a onClick={previousTab} className="tab-previous">
                             Back
                           </a>
-                          <button type="submit" className="submit-button">
-                            Join waitlist!
+                          <button
+                            type="submit"
+                            className="submit-button"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? "Please wait ..." : "Join Waitlist!"}
                           </button>
+                          
                         </div>
                       </div>
                       <div className="image-form">

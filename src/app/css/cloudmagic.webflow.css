@@ -1119,6 +1119,10 @@ h2 {
   grid-auto-columns: 1fr;
   width: 100%;
   display: grid;
+  
+}
+.button-wrap .submit-button{
+  color: #fff;
 }
 
 .select-field {
@@ -1450,6 +1454,8 @@ h2 {
   .tab-next {
     height: 3.5em;
   }
+  
+ 
 
   .form-header-wrapper {
     text-align: center;
