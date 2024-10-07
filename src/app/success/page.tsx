@@ -48,7 +48,7 @@ const SuccessPage = () => {
               Visit Canny
             </a>
             <Link href="/" className="tab-next success">
-              Back Home
+            Back Home
             </Link>
           </div>
           <div className="user">
