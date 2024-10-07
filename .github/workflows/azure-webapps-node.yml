@@ -1,4 +1,4 @@
-name:  Next.js
+name: Next.js CI/CD Pipeline
 
 on:
   push:
@@ -7,37 +7,46 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: cmagic-waitlist-app   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'         # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '22'                   # set this to the node version to use
+  AZURE_WEBAPP_PACKAGE_PATH: '.'           # path to your web app project, defaults to the repository root
+  NODE_VERSION: '22'                       # Node.js version to use
 
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run build
-        npm run test --if-present
+      # Step 3: Install dependencies, build, and test
+      - name: Install dependencies, build, and test
+        run: |
+          npm ci
+          npm run build
+          npm run test --if-present
 
-    - name: Zip artifact for deployment
-      run: zip release.zip ./* .next -r
+      # Step 4: Archive build artifacts
+      - name: Zip artifact for deployment
+        run: |
+          zip -r release.zip ./* .next
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: release.zip
+      # Step 5: Deploy to Azure Web App
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: release.zip
 
-    - name: Delete zip file
-      run: rm release.zip
+      # Step 6: Clean up deployment artifacts
+      - name: Remove zip file
+        run: rm release.zip

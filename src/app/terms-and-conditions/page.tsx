@@ -210,8 +210,8 @@ const TermsAndConditionsPage = () => {
                 sizes="(max-width: 479px) 35vw, (max-width: 991px) 16vw, 10vw"
                 alt=""
                 className="footer-image"
-                width={665}
-                height={50}
+                width={161}
+                height={35}
               />
               <p className="body-paragraph-2 normal white">
                 We're testing Cloudmagic, a service that helps you deploy
@@ -224,19 +224,19 @@ const TermsAndConditionsPage = () => {
                 <div className="text-block-2">Legal</div>
                 <div className="navigation">
                   <Link
-                    href="terms-and-conditions.html"
+                    href="/terms-and-conditions"
                     className="navigation-link w-inline-block w--current"
                   >
                     <div>Terms</div>
                   </Link>
                   <Link
-                    href="privacy-policy.html"
+                    href="/privacy-policy"
                     className="navigation-link w-inline-block"
                   >
                     <div>Privacy</div>
                   </Link>
                   <Link
-                    href="cookie-policy.html"
+                    href="/cookie-policy"
                     className="navigation-link w-inline-block"
                   >
                     <div>Cookies</div>

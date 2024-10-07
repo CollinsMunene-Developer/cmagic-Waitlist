@@ -14,8 +14,8 @@ const PrivacyPolicyPage = () => {
           <Image
             src={contentlogo}
             alt=""
-            width={665}
-            height={40}
+            width={161}
+            height={35}
             className="brand-image"
           />
         </Link>

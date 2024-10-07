@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  contentlogo,
   azure,
   amazonicon,
   googleimg,
+  contentlogo,
 } from "./assets/icons/moreicons/moreicons";
 import { playbutton } from "./assets/icons/icons";
 import "./css/cloudmagic.webflow.css";
@@ -24,12 +24,12 @@ export default function Home() {
     <div className="body">
       <nav className="nav">
         <Link href="/" className="brand-nav w-inline-block">
-          <Image
-            src={contentlogo}
-            alt="Content Logo"
-            className="brand-image"
-            width={665}
-            height={30}
+          <Image 
+                src={contentlogo}
+                alt=""
+                className="play-imagecmagic logo"
+                width={161}
+                height={35}
           />
         </Link>
       </nav>
@@ -37,10 +37,10 @@ export default function Home() {
         <div className="container">
           <div className="header-wrapper">
             <h1 className="heading">
-              Fast, Hyperscale
-              <br />
-              Container Infrastructure <br />
-              <span className="blue">in Minutes</span>
+            <span className="elastic">Elastic</span> <br /><span
+              className="continfra-text"
+              >Container <strong>Infrastructure</strong> <br /></span
+            ><span className="blue">in Minutes</span>
             </h1>
             <div className="hero-p-wrapper">
               <p className="body-paragraph">
@@ -61,7 +61,7 @@ export default function Home() {
       </div>
       <div className="bottom">
         <div className="bg-wrapper"></div>
-        <div className="container auto">
+        <div className="container">
           <div className="video-wrapper">
             <a href="#" className="w-inline-block w-lightbox">
               <Image
@@ -88,8 +88,8 @@ export default function Home() {
                   src={azure}
                   alt="Azure Logo"
                   className="client-image"
-                  width={80}
-                  height={100}
+                  width={84}
+                  height={84}
                 />
               </div>
               <div
@@ -100,8 +100,8 @@ export default function Home() {
                   src={amazonicon}
                   alt="Amazon Logo"
                   className="client-image"
-                  width={80}
-                  height={100}
+                  width={88}
+                  height={88}
                 />
               </div>
               <div
@@ -112,8 +112,9 @@ export default function Home() {
                   src={googleimg}
                   alt="Amazon Logo"
                   className="client-image"
-                  width={80}
-                  height={100}
+                  width={84}
+                  height={84}
+
                 />
               </div>
             </div>
@@ -126,10 +127,10 @@ export default function Home() {
             <div className="footer-logo-wrap">
               <Image
                 src={contentlogo}
-                alt="Footer Logo"
-                className="footer-image"
-                width={665}
-                height={30}
+                alt=""
+                className="play-imagecmagic logo"
+                width={161}
+                height={35}
               />
               <p className="body-paragraph-2 normal white">
                 CLOUDMAGIC lets you deploy autoscale container infrastructure to

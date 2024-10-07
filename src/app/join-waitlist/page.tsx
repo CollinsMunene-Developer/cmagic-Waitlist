@@ -11,7 +11,6 @@ import {
   featuredicon3,
 } from "../assets/icons/featuredicons/featuredicons";
 import { background7 } from "../assets/images/Background/background";
-import { mailimg } from "../assets/icons/icons";
 import "../css/normalize.css";
 import "../css/cloudmagic.webflow.css";
 import "../css/webflow.css";
@@ -328,8 +327,8 @@ const FormPage = () => {
           <Image
             src={contentlogo}
             alt=""
-            width={200}
-            height={40}
+            width={162}
+            height={35}
             className="brand-image"
             loading="lazy"
             sizes="(max-width: 479px) 42vw, (max-width: 991px) 16vw, 10vw"
@@ -352,9 +351,7 @@ const FormPage = () => {
                       <Image
                         src={featuredicon3}
                         alt=""
-                        width={48}
-                        height={48}
-                        className="tab-image"
+                        style={{width:"3em", height:"3em"} }
                       />
                       <div className="progress-line hide"></div>
                     </div>
@@ -377,8 +374,7 @@ const FormPage = () => {
                       <Image
                         src={featuredicon2}
                         alt=""
-                        width={48}
-                        height={48}
+                        style={{width:"3em", height:"3em"} }
                         className="tab-image"
                       />
                       <div className="progress-line hide"></div>
@@ -402,8 +398,8 @@ const FormPage = () => {
                       <Image
                         src={featuredicon1}
                         alt=""
-                        width={48}
-                        height={48}
+                        style={{width:"3em", height:"3em"} }
+
                         className="tab-image"
                       />
                     </div>
@@ -433,7 +429,7 @@ const FormPage = () => {
                           <div className="field-text">First name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label"
+                              className="field-label "
                               name="firstName"
                               placeholder="Enter your first name"
                               type="text"
@@ -517,6 +513,7 @@ const FormPage = () => {
                         <div className="form-fields">
                           <div className="field-text">Country</div>
                           <div className="ff-wrapper">
+                            <nav className="field-label">
                             <select
                               name="Country"
                               id="country"
@@ -543,11 +540,13 @@ const FormPage = () => {
                                 </option>
                               ))}
                             </select>
+                            </nav>
                           </div>
                         </div>
                         <div className="form-fields">
                           <div className="field-text">Company size</div>
-                          <div className="ff-wrapper">
+                          <div className="ff-wrapper field">
+                            <nav className="field-label">
                             <select
                               id="Company-size-2"
                               name="companySize"
@@ -556,14 +555,16 @@ const FormPage = () => {
                               required
                               className="field-label"
                             >
-                              <option value="">Select company size...</option>
+                              <option value=""> Select company size...</option>
                               <option value="0 -50">0 -50</option>
                               <option value="50 - 100">50 - 100</option>
                               <option value="100 - 200">100 - 200</option>
                               <option value="200 -500">200 -500</option>
                               <option value="500 +">500 +</option>
                             </select>
+                            </nav>
                           </div>
+                          
                         </div>
                         <div className="button-wrap">
                           <a onClick={previousTab} className="tab-previous">
@@ -602,6 +603,7 @@ const FormPage = () => {
                         <div className="form-fields">
                           <div className="field-text">Role</div>
                           <div className="ff-wrapper">
+                            <nav className="field-label">
                             <select
                               id="Role-2"
                               name="role"
@@ -626,6 +628,7 @@ const FormPage = () => {
                               <option value="Executive">Executive</option>
                               <option value="Other">Other</option>
                             </select>
+                            </nav>
                           </div>
                         </div>
                         <div className="form-fields">

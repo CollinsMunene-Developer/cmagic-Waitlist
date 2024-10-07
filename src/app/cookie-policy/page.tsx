@@ -14,8 +14,8 @@ const CookiePolicyPage = () => {
             src={contentlogo}
             alt=""
             className="brand-image"
-            width={665}
-            height={50}
+            width={161}
+            height={35}
           />
         </Link>
       </div>
@@ -111,8 +111,8 @@ const CookiePolicyPage = () => {
                 src={contentlogo}
                 alt=""
                 className="footer-image"
-                width={665}
-                height={50}
+                width={161}
+                height={35}
               />
               <p className="body-paragraph-2 normal white">
                 We're testing Cloudmagic, a service that helps you deploy

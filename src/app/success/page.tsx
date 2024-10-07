@@ -19,8 +19,8 @@ const SuccessPage = () => {
             src={contentlogo}
             alt=""
             className="brand-image"
-            width={665}
-            height={30}
+            width={161}
+            height={35}
             sizes="(max-width: 479px) 42vw, (max-width: 991px) 16vw, 10vw"
           />
         </Link>
@@ -31,33 +31,34 @@ const SuccessPage = () => {
             src={stars}
             alt=""
             className="star-ratings"
-            width={120}
-            height={30}
+            style={{width:"7.25em", height:"1.5em"}}
           />
           <div className="success-p-wrapper">
             <p className="body-paragraph success">
-              Thank you for joining the waitlist. We'll keep you posted on
-              development. <br />
-              <br />
-              Visit our canny page to request and vote for your favorite
-              features.
+            Thank you for joining the waitlist.We’ll keep you posted on
+            development. <br /><br />Visit our canny page to request and vote
+            for your favorite features. 
             </p>
           </div>
+          <div className="button-wrap">
           <div className="button-wrapper">
-            <a className="tab-next success" onClick={goToCannywebsite}>
+            <a className="tab-next success " onClick={goToCannywebsite}>
               Visit Canny
             </a>
-            <Link href="/" className="tab-next success">
+
+          </div>
+          <div className="button-wrapper">
+          <Link href="/" className="tab-next success">
             Back Home
             </Link>
+          </div>
           </div>
           <div className="user">
             <Image
               src={groupimg}
               alt=""
               className="user-image"
-              width={80}
-              height={80}
+              style={{width:"4.38em", height:"4.38em"}}
             />
             <div className="user-details">
               <div className="user-name">James Connor</div>
