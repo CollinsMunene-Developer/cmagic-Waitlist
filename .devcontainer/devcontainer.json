@@ -1,5 +1,5 @@
 {
-    "name": "Next.js Development with Azure CLI and Docker",
+    "name": "Next.js Development with Docker and Azure CLI",
     "dockerFile": "Dockerfile.dev",
     "forwardPorts": [4000],
     "remoteUser": "node",
@@ -11,22 +11,18 @@
             "extensions": [
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
-                "ms-vscode.vscode-node-azure-pack",
-                "ms-azuretools.vscode-docker"
+                "ms-azuretools.vscode-docker",
+                "ms-vscode.azurecli"
             ]
         }
     },
     "remoteEnv": {
         "PATH": "${containerEnv:PATH}:/usr/local/share/npm-global/bin"
     },
-    "postCreateCommand": "npm install && az --version && docker --version",
-    "features": {
-        "azure-cli": "latest",
-        "docker-in-docker": "latest"
-    },
-    "runArgs": ["--init"],
+    "postCreateCommand": "sudo chown node:node /app && npm install",
     "mounts": [
-        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.azure,target=/home/node/.azure,type=bind"
     ],
-    "overrideCommand": false
+    "runArgs": ["--init"]
 }

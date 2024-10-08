@@ -48,7 +48,6 @@ const PrivacyPolicyPage = () => {
               safeguard your information when you visit our website [insert
               website URL] and any other media form, media channel, mobile
               website, or mobile application related or connected thereto
-              (collectively, the "Site").
             </p>
             <p>
               By accessing or using our Site, you agree to this Privacy Policy.
@@ -155,7 +154,7 @@ const PrivacyPolicyPage = () => {
               cookie is being sent.
             </p>
 
-            <h2>9. Children's Privacy</h2>
+            <h2>9. childrens Privacy</h2>
             <p>
               Our Site is not intended for use by children under the age of 13,
               and we do not knowingly collect personal information from children
@@ -199,7 +198,7 @@ const PrivacyPolicyPage = () => {
             Fast, Hyperscale Container Infrastructure in Minutes
           </h2>
           <p className="body-paragraph legal">
-            We're testing Cloudmagic, a service that helps you deploy
+            We are testing Cloudmagic, a service that helps you deploy
             cutting-edge container infrastructure for your Microservices – in
             minutes. Sign up for early access.
           </p>
@@ -221,7 +220,7 @@ const PrivacyPolicyPage = () => {
                 className="footer-image"
               />
               <p className="body-paragraph-2 normal white">
-                We're testing Cloudmagic, a service that helps you deploy
+                We are testing Cloudmagic, a service that helps you deploy
                 cutting-edge container infrastructure for your Microservices –
                 in minutes.
               </p>

@@ -37,7 +37,7 @@ const CookiePolicyPage = () => {
       </div>
       <div className="legal-rich-text">
         <div className="container legal">
-        <div class="rich-text-block w-richtext">
+        <div className="rich-text-block w-richtext">
         <h1>1. Introduction</h1>
         <p>Welcome to [Your Website Name] (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website [insert website URL] and any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the “Site”).</p>
         <p>By accessing or using our Site, you agree to this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access the Site.</p>
@@ -94,7 +94,7 @@ const CookiePolicyPage = () => {
             Fast, Hyperscale Container Infrastructure in Minutes
           </h2>
           <p className="body-paragraph legal">
-            We're testing Cloudmagic, a service that helps you deploy
+            We are testing Cloudmagic, a service that helps you deploy
             cutting-edge container infrastructure for your Microservices – in
             minutes. Sign up for early access.
           </p>
@@ -115,7 +115,7 @@ const CookiePolicyPage = () => {
                 height={35}
               />
               <p className="body-paragraph-2 normal white">
-                We're testing Cloudmagic, a service that helps you deploy
+                We are testing Cloudmagic, a service that helps you deploy
                 cutting-edge container infrastructure for your Microservices –
                 in minutes.{" "}
               </p>
