@@ -264,17 +264,15 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.client-image {
-  object-fit: fill;
-  width: 5.25em;
-  max-width: 100%;
-}
 
 .client-image{
   box-sizing: border-box;
   object-fit: fill;
   width: 9.25em;
   height: auto;
+  object-fit: fill;
+  width: 5.25em;
+  max-width: 100%;
 }
 
 .navigation {
