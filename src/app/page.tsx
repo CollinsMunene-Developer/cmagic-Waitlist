@@ -124,25 +124,41 @@ export default function Home() {
           <div className="client-wrapper">
             <div className="text-block">Planned support for</div>
             <div className="w-layout-grid client-image-grid">
-              {[
-                { src: azure, alt: "Azure Logo" },
-                { src: amazonicon, alt: "Amazon Logo" },
-                { src: googleimg, alt: "Google Logo" },
-              ].map((client, index) => (
-                <div key={index} className="image-wrap">
-                  <Image
-                    src={client.src}
-                    alt={client.alt}
-                    className="client-image"
-                    width={84}
-                    height={84}
-                  />
-                </div>
-              ))}
+              <div
+                id="w-node-_782e7c2e-0d6a-f1db-6204-e5cb059b2a64-94e90351"
+                className="image-wrap"
+              >
+                <Image
+                  src={azure}
+                  alt="Azure Logo"
+                  className="client-image"
+                />
+              </div>
+              <div
+                id="w-node-_43a2f9a2-cbd3-1de7-dab9-493cade4a36c-94e90351"
+                className="image-wrap"
+              >
+                <Image
+                  src={amazonicon}
+                  alt="Amazon Logo"
+                  className="client-image"
+                />
+              </div>
+              <div
+                id="w-node-_43a2f9a2-cbd3-1de7-dab9-493cade4a36c-94e90351"
+                className="image-wrap"
+              >
+                <Image
+                  src={googleimg}
+                  alt="Amazon Logo"
+                  className="client-image"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
+
       <footer className="footer">
         <div className="container-2">
           <div className="footer-lower">
@@ -150,9 +166,9 @@ export default function Home() {
               <Image
                 src={contentlogo}
                 alt=""
-                className="play-imagecmagic logo"
-                width={161}
-                height={35}
+                className="footer-image"
+                style={{width: "161px", height: "35px"}}
+
               />
               <p className="body-paragraph-2 normal white">
                 CLOUDMAGIC lets you deploy autoscale container infrastructure to

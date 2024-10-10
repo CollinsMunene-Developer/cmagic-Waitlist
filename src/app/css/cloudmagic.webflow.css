@@ -19,7 +19,7 @@
   height: 50px;
   border: 3px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top: 3px solid #3498db;
+  border-top: 3px solid  #ffff;
   animation: spin 1s linear infinite;
 }
 
@@ -270,7 +270,7 @@ h2 {
   max-width: 100%;
 }
 
-.client-image.google {
+.client-image{
   box-sizing: border-box;
   object-fit: fill;
   width: 9.25em;
