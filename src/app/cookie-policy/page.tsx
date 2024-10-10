@@ -15,7 +15,7 @@ const CookiePolicyPage = () => {
             alt=""
             className="brand-image"
             width={161}
-            height={35}
+            height={33}
           />
         </Link>
       </div>
@@ -112,7 +112,7 @@ const CookiePolicyPage = () => {
                 alt=""
                 className="footer-image"
                 width={161}
-                height={35}
+                height={33}
               />
               <p className="body-paragraph-2 normal white">
                 We are testing Cloudmagic, a service that helps you deploy
@@ -144,41 +144,14 @@ const CookiePolicyPage = () => {
                   </Link>
                 </div>
               </div>
-              <div className="navigation-block">
-                <div className="text-block-2">Contact</div>
-                <div className="navigation">
-                  <a
-                    href="mailto:help@cloudmagic.dev"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>help@cloudmagic.dev</div>
-                  </a>
-                  <a
-                    href="mailto:njavwa@caantin.com"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>
-                      Nairobi, Kenya
-                      <br />
-                      Ikigai, Westlands
-                    </div>
-                  </a>
-                </div>
-              </div>
+
               <div
                 id="w-node-_6133e129-69fc-2ce6-1b85-5cc610993ee1-10993ebe"
                 className="navigation-block center"
               >
                 <div className="text-block-2">Social Media</div>
                 <div className="navigation">
-                  <a
-                    href="https://www.linkedin.com/company/shipht/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>Linkedin</div>
-                  </a>
+
                   <a
                     href="https://x.com/shipht_it"
                     target="_blank"

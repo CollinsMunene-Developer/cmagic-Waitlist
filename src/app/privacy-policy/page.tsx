@@ -15,7 +15,7 @@ const PrivacyPolicyPage = () => {
             src={contentlogo}
             alt=""
             width={161}
-            height={35}
+            height={33}
             className="brand-image"
           />
         </Link>
@@ -215,8 +215,8 @@ const PrivacyPolicyPage = () => {
               <Image
                 src={contentlogo}
                 alt=""
-                width={665}
-                height={40}
+                width={161}
+                height={33}
                 className="footer-image"
               />
               <p className="body-paragraph-2 normal white">
@@ -246,27 +246,7 @@ const PrivacyPolicyPage = () => {
                   </Link>
                 </div>
               </div>
-              <div className="navigation-block">
-                <div className="text-block-2">Contact</div>
-                <div className="navigation">
-                  <a
-                    href="mailto:help@cloudmagic.dev"
-                    className="navigation-link"
-                  >
-                    <div>help@cloudmagic.dev</div>
-                  </a>
-                  <a
-                    href="mailto:njavwa@caantin.com"
-                    className="navigation-link"
-                  >
-                    <div>
-                      Nairobi, Kenya
-                      <br />
-                      Ikigai, Westlands
-                    </div>
-                  </a>
-                </div>
-              </div>
+
               <div className="navigation-block center">
                 <div className="text-block-2">Social Media</div>
                 <div className="navigation">

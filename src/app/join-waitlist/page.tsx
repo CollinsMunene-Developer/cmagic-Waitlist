@@ -93,15 +93,12 @@ const FormPage = () => {
         alert(
           "An error occurred while submitting the form. Please try again later."
         );
-      }
-      finally {
+      } finally {
         setIsSubmitting(false);
       }
-      
     } else {
       alert("Please complete all fields before submitting the form.");
     }
-
   };
 
   const nextTab = () => {
@@ -327,17 +324,16 @@ const FormPage = () => {
           <Image
             src={contentlogo}
             alt=""
-            width={162}
+            width={161}
             height={35}
             className="brand-image"
             loading="lazy"
-            sizes="(max-width: 479px) 42vw, (max-width: 991px) 16vw, 10vw"
           />
         </Link>
       </div>
       <div className="tab-form-wrapper">
         <div className="form-block w-form">
-          <form onSubmit={handleSubmit} className="form" >
+          <form onSubmit={handleSubmit} className="form">
             <div className="tabs">
               <div className="tabs-menu">
                 <a
@@ -351,7 +347,7 @@ const FormPage = () => {
                       <Image
                         src={featuredicon3}
                         alt=""
-                        style={{width:"3em", height:"3em"} }
+                        style={{ width: "3em", height: "3em" }}
                       />
                       <div className="progress-line hide"></div>
                     </div>
@@ -374,7 +370,7 @@ const FormPage = () => {
                       <Image
                         src={featuredicon2}
                         alt=""
-                        style={{width:"3em", height:"3em"} }
+                        style={{ width: "3em", height: "3em" }}
                         className="tab-image"
                       />
                       <div className="progress-line hide"></div>
@@ -398,8 +394,7 @@ const FormPage = () => {
                       <Image
                         src={featuredicon1}
                         alt=""
-                        style={{width:"3em", height:"3em"} }
-
+                        style={{ width: "3em", height: "3em" }}
                         className="tab-image"
                       />
                     </div>
@@ -429,13 +424,14 @@ const FormPage = () => {
                           <div className="field-text">First name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label "
+                              className="field-label  "
                               name="firstName"
                               placeholder="Enter your first name"
                               type="text"
                               value={formData.firstName}
                               onChange={handleInputChange}
                               required
+                              maxLength={256}
                             />
                           </div>
                         </div>
@@ -443,13 +439,14 @@ const FormPage = () => {
                           <div className="field-text">Last Name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label"
+                              className="field-label "
                               name="lastName"
                               placeholder="Enter your last name"
                               type="text"
                               value={formData.lastName}
                               onChange={handleInputChange}
                               required
+                              maxLength={256}
                             />
                           </div>
                         </div>
@@ -464,6 +461,7 @@ const FormPage = () => {
                               value={formData.email}
                               onChange={handleInputChange}
                               required
+                              maxLength={256}
                             />
                           </div>
                         </div>
@@ -500,7 +498,7 @@ const FormPage = () => {
                           <div className="field-text">Company Name</div>
                           <div className="ff-wrapper">
                             <input
-                              className="field-label"
+                              className="field-label "
                               name="companyName"
                               placeholder="Enter your company name"
                               type="text"
@@ -514,32 +512,28 @@ const FormPage = () => {
                           <div className="field-text">Country</div>
                           <div className="ff-wrapper">
                             <nav className="field-label">
-                            <select
-                              name="Country"
-                              id="country"
-                              value={selectedCountry}
-                              onChange={handleCountryChange}
-                              className="field-label"
-                              required
-                            >
-                              <option
-                                value=""
-                                disabled
+                              <select
+                                name="Country"
+                                id="country"
+                                value={selectedCountry}
+                                onChange={handleCountryChange}
                                 className="field-label"
-                              
+                                required
                               >
-                                Select Country
-                              </option>
-                              {countries.map((country) => (
-                                <option key={country} value={country}>
-                                  {country}
-                                  {formData.country === country && (
-                                    <Check
-                                    />
-                                  )}
+                                <option
+                                  value=""
+                                  disabled
+                                  className="fieldlabel"
+                                >
+                                  Select Country
                                 </option>
-                              ))}
-                            </select>
+                                {countries.map((country) => (
+                                  <option key={country} value={country}>
+                                    {country}
+                                    {formData.country === country && <Check />}
+                                  </option>
+                                ))}
+                              </select>
                             </nav>
                           </div>
                         </div>
@@ -547,24 +541,26 @@ const FormPage = () => {
                           <div className="field-text">Company size</div>
                           <div className="ff-wrapper field">
                             <nav className="field-label">
-                            <select
-                              id="Company-size-2"
-                              name="companySize"
-                              value={formData.companySize}
-                              onChange={handleInputChange}
-                              required
-                              className="field-label"
-                            >
-                              <option value=""> Select company size...</option>
-                              <option value="0 -50">0 -50</option>
-                              <option value="50 - 100">50 - 100</option>
-                              <option value="100 - 200">100 - 200</option>
-                              <option value="200 -500">200 -500</option>
-                              <option value="500 +">500 +</option>
-                            </select>
+                              <select
+                                id="Company-size-2"
+                                name="companySize"
+                                value={formData.companySize}
+                                onChange={handleInputChange}
+                                required
+                                className="field-label"
+                              >
+                                <option value="" className="fieldlabel">
+                                  {" "}
+                                  Select company size...
+                                </option>
+                                <option value="0 -50">0 -50</option>
+                                <option value="50 - 100">50 - 100</option>
+                                <option value="100 - 200">100 - 200</option>
+                                <option value="200 -500">200 -500</option>
+                                <option value="500 +">500 +</option>
+                              </select>
                             </nav>
                           </div>
-                          
                         </div>
                         <div className="button-wrap">
                           <a onClick={previousTab} className="tab-previous">
@@ -604,30 +600,32 @@ const FormPage = () => {
                           <div className="field-text">Role</div>
                           <div className="ff-wrapper">
                             <nav className="field-label">
-                            <select
-                              id="Role-2"
-                              name="role"
-                              value={formData.role}
-                              onChange={handleInputChange}
-                              required
-                              className="field-label"
-                            >
-                              <option value="">Select your role</option>
-                              <option value="Cloud Architect">
-                                Cloud Architect
-                              </option>
-                              <option value="Cloud Engineer / Systems Engineers">
-                                Cloud Engineer / Systems Engineers
-                              </option>
-                              <option value="DevOps Engineer">
-                                DevOps Engineer
-                              </option>
-                              <option value="Software Developer">
-                                Software Developer
-                              </option>
-                              <option value="Executive">Executive</option>
-                              <option value="Other">Other</option>
-                            </select>
+                              <select
+                                id="Role-2"
+                                name="role"
+                                value={formData.role}
+                                onChange={handleInputChange}
+                                required
+                                className="field-label"
+                              >
+                                <option value="" className="fieldlabel">
+                                  Select your role
+                                </option>
+                                <option value="Cloud Architect">
+                                  Cloud Architect
+                                </option>
+                                <option value="Cloud Engineer / Systems Engineers">
+                                  Cloud Engineer / Systems Engineers
+                                </option>
+                                <option value="DevOps Engineer">
+                                  DevOps Engineer
+                                </option>
+                                <option value="Software Developer">
+                                  Software Developer
+                                </option>
+                                <option value="Executive">Executive</option>
+                                <option value="Other">Other</option>
+                              </select>
                             </nav>
                           </div>
                         </div>
@@ -643,7 +641,7 @@ const FormPage = () => {
                                 required
                                 className="field-label "
                               >
-                                <option value="">
+                                <option value="" className="fieldlabel">
                                   How do you plan to use Cloudmagic?
                                 </option>
                                 <option value="Work">Work</option>
@@ -659,12 +657,11 @@ const FormPage = () => {
                           </a>
                           <button
                             type="submit"
-                            className="submit-button"
+                            className="submitbutton "
                             disabled={isSubmitting}
                           >
-                            {isSubmitting ? "Please wait ..." : "Join Waitlist!"}
+                            {isSubmitting ? "Please wait ..." : "Join Waitlist"}
                           </button>
-                          
                         </div>
                       </div>
                       <div className="image-form">

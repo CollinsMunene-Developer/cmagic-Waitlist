@@ -55,7 +55,7 @@ export default function Home() {
             alt=""
             className="play-imagecmagic logo"
             width={161}
-            height={35}
+            height={33}
           />
         </Link>
       </nav>
@@ -71,7 +71,7 @@ export default function Home() {
             </h1>
             <div className="hero-p-wrapper">
               <p className="body-paragraph">
-                We're testing CLOUDMAGIC, a service that lets you deploy{" "}
+                We re testing CLOUDMAGIC, a service that lets you deploy{" "}
                 <em>autoscale container infrastructure</em> to your favorite
                 cloud – in minutes. <br />
                 <br />
@@ -167,12 +167,13 @@ export default function Home() {
                 src={contentlogo}
                 alt=""
                 className="footer-image"
-                style={{width: "161px", height: "35px"}}
+                style={{width: "161px", height: "33px"}}
 
               />
               <p className="body-paragraph-2 normal white">
                 CLOUDMAGIC lets you deploy autoscale container infrastructure to
-                your favorite cloud – in minutes.
+                your favorite <br />
+                cloud – in minutes.
               </p>
             </div>
             <div className="footer-navigation">

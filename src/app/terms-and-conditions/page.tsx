@@ -17,8 +17,8 @@ const TermsAndConditionsPage = () => {
             sizes="(max-width: 479px) 42vw, (max-width: 991px) 15vw, 10vw"
             alt=""
             className="brand-image"
-            width={665}
-            height={50}
+            width={161}
+            height={33}
           />
         </Link>
       </div>
@@ -210,7 +210,7 @@ const TermsAndConditionsPage = () => {
                 alt=""
                 className="footer-image"
                 width={161}
-                height={35}
+                height={33}
               />
               <p className="body-paragraph-2 normal white">
                 We are testing Cloudmagic, a service that helps you deploy
@@ -242,41 +242,14 @@ const TermsAndConditionsPage = () => {
                   </Link>
                 </div>
               </div>
-              <div className="navigation-block">
-                <div className="text-block-2">Contact</div>
-                <div className="navigation">
-                  <a
-                    href="mailto:njavwa@caantin.com"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>help@cloudmagic.dev</div>
-                  </a>
-                  <a
-                    href="mailto:njavwa@caantin.com"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>
-                      Nairobi, Kenya
-                      <br />
-                      Ikigai, Westlands
-                    </div>
-                  </a>
-                </div>
-              </div>
+
               <div
                 id="w-node-_6133e129-69fc-2ce6-1b85-5cc610993ee1-10993ebe"
                 className="navigation-block center"
               >
                 <div className="text-block-2">Social Media</div>
                 <div className="navigation">
-                  <a
-                    href="https://www.linkedin.com/company/shipht/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="navigation-link w-inline-block"
-                  >
-                    <div>Linkedin</div>
-                  </a>
+ 
                   <a
                     href="https://x.com/shipht_it"
                     target="_blank"

@@ -539,42 +539,38 @@ h2 {
   border: 1px #000;
   height: 100%;
   margin-bottom: 0;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.8em;
+  padding-right: 1.3em;
   font-size: 1em;
   width: 100%;
   display: inline-flex;
   cursor: pointer;
 }
 
+
 .ff-wrapper .field-label option {
-  color: #cecfd2;
+  color: #fff;
   font-size: 1em;
   background-color: #0c111d;
-  overflow: scroll;
   width: 100%;
   cursor: pointer;
- 
-
 }
 
- 
+
+
 .ff-wrapper .field-label{
-  color:gray ;
+  color: #fff;
   width: 100%;
   font-size: 1em;
   background-color: #0c111d;
-  cursor: p;
+  cursor: pointer;
 }
 .ff-wrapper 
 .field-label::placeholder {
   color: #85888e;
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
-.field-label.hide, .field-label-2 {
-  display: none;
-}
 
 .form-block {
   width: 100%;
@@ -843,7 +839,7 @@ h2 {
   background-color: #7f56d91c;
 }
 
-.submit-button {
+.submitbutton {
   text-align: center;
   background-color: #7f56d9;
   border: .13em solid #ffffff14;
@@ -856,11 +852,11 @@ h2 {
   font-family: Inter, sans-serif;
   font-size: 1em;
   font-weight: 600;
-  transition: all .4s ease-in;
-  display: flex;
+  color: #fff;
+  cursor:pointer;
 }
 
-.submit-button:hover {
+.submitbutton:hover {
   background-color: #54329e;
 }
 

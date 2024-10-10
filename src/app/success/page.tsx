@@ -31,7 +31,7 @@ const SuccessPage = () => {
             src={stars}
             alt=""
             className="star-ratings"
-            style={{width:"7.25em", height:"1.5em"}}
+            style={{width:"7.25em", height:"1.2em"}}
           />
           <div className="success-p-wrapper">
             <p className="body-paragraph success">
