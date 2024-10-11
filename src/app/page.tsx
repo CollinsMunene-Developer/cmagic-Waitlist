@@ -55,7 +55,7 @@ export default function Home() {
             alt=""
             className="play-imagecmagic logo"
             width={161}
-            height={33}
+            height={35}
           />
         </Link>
       </nav>
@@ -93,9 +93,18 @@ export default function Home() {
         </div>
       </div>
       <div className="bottom">
+        {
+          isLoading && (
+            <div className="fullscreen-overlay">
+              <Spinner />
+
+            </div>
+          )
+        }
         <div className={`bg-wrapper ${isLoading ? 'loading-bg' : ''}`}></div>
         <div className="container auto">
-          <div className="video-wrapper">
+
+          <div className="video-wrapper" >
             {showVideo ? (
               <iframe
                 style={{width:"100%", height:"100%"}}
@@ -103,10 +112,11 @@ export default function Home() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
-            ) : isLoading ? (
-              <Spinner />
-            ) : (
+
+              >
+                
+              </iframe>
+            ) :  (
               <a href="#" className="w-inline-block w-lightbox" onClick={handlePlayClick}>
                 <Image
                   src={playbutton}
@@ -115,7 +125,8 @@ export default function Home() {
                   className="play-image"
                 />
               </a>
-            )}
+            )
+            }
           </div>
         </div>
       </div>
