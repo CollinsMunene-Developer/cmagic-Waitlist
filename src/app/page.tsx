@@ -93,7 +93,7 @@ export default function Home() {
         </div>
       </div>
       <div className="bottom">
-        <div className="bg-wrapper"></div>
+        <div className={`bg-wrapper ${isLoading ? 'loading-bg' : ''}`}></div>
         <div className="container auto">
           <div className="video-wrapper">
             {showVideo ? (
