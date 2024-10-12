@@ -6,6 +6,17 @@
   grid-auto-columns: 1fr;
   display: grid;
 }
+.brand-image {
+  max-width: 161px; /* Maintain a max width */
+  width: 100%; /* Ensures the image scales down */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.footer-image{
+  max-width: 161px; /* Maintain a max width */
+  width: 100%; /* Ensures the image scales down */
+  height: auto; /* Maintain the aspect ratio */
+}
 
 .fullscreen-overlay {
   position: fixed;

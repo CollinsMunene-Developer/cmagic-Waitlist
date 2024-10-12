@@ -216,7 +216,7 @@ const PrivacyPolicyPage = () => {
                 src={contentlogo}
                 alt=""
                 width={161}
-                height={33}
+                height={35}
                 className="footer-image"
               />
               <p className="body-paragraph-2 normal white">
